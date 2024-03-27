@@ -7,8 +7,10 @@ class CardTjsp extends StatefulWidget {
   final String matricula;
   final String roteiro;
   final String numeroDias;
+  final Color? backgroundColor;
 
-  const CardTjsp(this.nome, this.cargo, this.matricula, this.roteiro, this.numeroDias,
+  const CardTjsp(
+      this.nome, this.cargo, this.matricula, this.roteiro, this.numeroDias, this.backgroundColor,
       {super.key});
 
   @override
@@ -16,71 +18,69 @@ class CardTjsp extends StatefulWidget {
 }
 
 class _CardTjspState extends State<CardTjsp> {
+
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.grey[300],
-      child: InkWell(
-        onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.nome,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+      color: widget.backgroundColor,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              widget.nome,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                const Text('CARGO: ',
+                    style:
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                Expanded(
+                  child: Text(
+                    widget.cargo,
+                    //quebra de linha automática caso o texto seja muito grande
+                    softWrap: true,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  const Text('CARGO: ',
-                      style:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                  Expanded(
-                    child: Text(
-                      widget.cargo,
-                      //quebra de linha automática caso o texto seja muito grande
-                      softWrap: true,
-                    ),
+              ],
+            ),
+            Row(
+              children: [
+                const Text('MATRÍCULA: ',
+                    style:
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                Text(widget.matricula)
+              ],
+            ),
+            Row(
+              children: [
+                const Text('ROTEIRO: ',
+                    style:
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                Expanded(
+                  child: Text(
+                    widget.roteiro,
+                    //quebra de linha automática caso o texto seja muito grande
+                    softWrap: true,
                   ),
-                ],
-              ),
-              Row(
-                children: [
-                  const Text('MATRÍCULA: ',
-                      style:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                  Text(widget.matricula)
-                ],
-              ),
-              Row(
-                children: [
-                  const Text('ROTEIRO: ',
-                      style:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                  Expanded(
-                    child: Text(
-                      widget.roteiro,
-                      //quebra de linha automática caso o texto seja muito grande
-                      softWrap: true,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  const Text('NÚMERO DE DIAS: ',
-                      style:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                  Text(widget.numeroDias),
-                ],
-              )
-            ],
-          ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                const Text('NÚMERO DE DIAS: ',
+                    style:
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                Text(widget.numeroDias),
+              ],
+            )
+          ],
         ),
       ),
     );

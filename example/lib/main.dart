@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
         body: const Expanded(
-          child: CardTjsp("Nome funcionário", "cargo", "matricula", "roteiro", "10"),
+          child: CardTjsp("Nome funcionário", "cargo", "matricula", "roteiro", "10", Colors.grey),
         )
     );
   }
